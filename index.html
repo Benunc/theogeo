@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Russia & Central Asia — Study Quiz (Ch. 15–16)</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --card: #1a2332;
+      --accent: #4a9eff;
+      --good: #3dd68c;
+      --bad: #ff6b6b;
+      --muted: #8b9cb3;
+      --text: #e8eef7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 1rem;
+      line-height: 1.5;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    h1 { font-size: 1.35rem; margin: 0 0 0.25rem; }
+    .sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    nav button, .btn {
+      background: var(--card);
+      border: 1px solid #2d3d52;
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    nav button.active, .btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0a1628;
+      font-weight: 600;
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid #2d3d52;
+    }
+    .card h2 { font-size: 1rem; margin: 0 0 0.75rem; color: var(--accent); }
+    .term { font-weight: 600; color: #fff; }
+    .flash-q { font-size: 1.1rem; margin-bottom: 1rem; }
+    .options { display: flex; flex-direction: column; gap: 0.5rem; }
+    .options label {
+      display: block;
+      padding: 0.65rem 0.85rem;
+      background: #243044;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .options label:hover { border-color: #3d5575; }
+    .options input { margin-right: 0.5rem; }
+    .options label.correct { border-color: var(--good); background: #1a3d2e; }
+    .options label.wrong { border-color: var(--bad); background: #3d1f1f; }
+    .feedback { margin-top: 0.75rem; padding: 0.75rem; border-radius: 8px; font-size: 0.95rem; }
+    .feedback.ok { background: #1a3d2e; color: var(--good); }
+    .feedback.no { background: #3d1f1f; color: #ffb4b4; }
+    .score-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .progress {
+      height: 6px;
+      background: #243044;
+      border-radius: 3px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .progress span {
+      display: block;
+      height: 100%;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    .plan ol { padding-left: 1.25rem; }
+    .plan li { margin-bottom: 0.75rem; }
+    .plan strong { color: var(--accent); }
+    .study-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #2d3d52; }
+    .study-item:last-child { border: none; margin: 0; padding: 0; }
+    .answer { color: var(--muted); font-size: 0.92rem; margin-top: 0.35rem; }
+    .hidden { display: none; }
+    .result-big { font-size: 1.5rem; text-align: center; padding: 1.5rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Russia & Central Asia — Ch. 15–16</h1>
+    <p class="sub">Study plan → flashcards → quiz. Open this file in any browser (double-click <code>index.html</code>).</p>
+
+    <nav>
+      <button type="button" data-panel="plan" class="active">Study plan</button>
+      <button type="button" data-panel="study">Review all</button>
+      <button type="button" data-panel="flash">Flashcards</button>
+      <button type="button" data-panel="quiz">Quiz</button>
+    </nav>
+
+    <!-- STUDY PLAN -->
+    <section id="plan" class="panel active plan">
+      <div class="card">
+        <h2>3-day study plan (~30 min/day)</h2>
+        <ol>
+          <li><strong>Day 1 — Regions & vocabulary</strong><br>
+            Read the four regions and their traits until you can name one fact about each.
+            Then drill vocab: Chernozem, continentality, taiga, Eurasia, Siberia, Central Asia, yurt, nomad, supra.</li>
+          <li><strong>Day 2 — History & economies</strong><br>
+            Czar / Peter the Great, Russian Revolution, USSR, command economy vs. capitalism, collective farms, Cold War, Great Game, Baltic republics.
+            Say aloud: <em>What happened to farmers on collective farms?</em></li>
+          <li><strong>Day 3 — Places & environment</strong><br>
+            Lake Baikal, Aral Sea, Silk Roads, Urals, Volga, Caspian, Northern European Plain, Trans-Siberian Railroad, General Winter, Land of Flames, nuclear testing, dachas, banyas.
+            Finish with a full <strong>Quiz</strong> tab run; repeat wrong answers.</li>
+        </ol>
+        <p style="margin-top:1rem;color:var(--muted);font-size:0.9rem;">
+          Tip: Parent asks “Why?” follow-ups (e.g. <em>Why is the Aral Sea hard to restore?</em>) — one sentence answers are enough.
+        </p>
+      </div>
+    </section>
+
+    <!-- REVIEW ALL -->
+    <section id="study" class="panel"></section>
+
+    <!-- FLASHCARDS -->
+    <section id="flash" class="panel">
+      <div class="score-bar">
+        <span id="flash-progress">Card 1</span>
+        <button type="button" class="btn" id="flash-shuffle">Shuffle</button>
+      </div>
+      <div class="card">
+        <p class="flash-q" id="flash-term"></p>
+        <button type="button" class="btn primary" id="flash-reveal">Show answer</button>
+        <p class="answer hidden" id="flash-answer"></p>
+        <div style="margin-top:1rem;display:flex;gap:0.5rem;">
+          <button type="button" class="btn" id="flash-prev">← Previous</button>
+          <button type="button" class="btn primary" id="flash-next">Next →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="panel">
+      <div class="score-bar">
+        <span id="quiz-score">Score: 0 / 0</span>
+        <span id="quiz-num">Question 1</span>
+      </div>
+      <div class="progress"><span id="quiz-bar" style="width:0%"></span></div>
+      <div class="card" id="quiz-card">
+        <p class="flash-q" id="quiz-question"></p>
+        <div class="options" id="quiz-options"></div>
+        <div class="feedback hidden" id="quiz-feedback"></div>
+        <button type="button" class="btn primary hidden" id="quiz-next" style="margin-top:0.75rem;">Next question</button>
+      </div>
+      <div class="card hidden result-big" id="quiz-done"></div>
+      <button type="button" class="btn" id="quiz-restart" style="margin-top:0.5rem;">Restart quiz</button>
+    </section>
+  </div>
+
+  <script>
+    const ITEMS = [
+      { term: "Chernozem", answer: "Rich black soil on the Russian steppes; among the world's most fertile soils." },
+      { term: "Continentality", answer: "Effect of being far from an ocean—greater temperature extremes inland." },
+      { term: "Czar (Peter the Great)", answer: "Russian emperor (1682–1725) who tried to westernize Russia." },
+      { term: "Cold War", answer: "Rivalry between the U.S. and USSR that never became direct open warfare between them." },
+      { term: "Collective farms", answer: "Huge government-owned farms where teams of laborers worked together in the Soviet Union." },
+      { term: "Baltic republics", answer: "Estonia, Latvia, and Lithuania—former Soviet republics on the Baltic Sea." },
+      { term: "Great Game", answer: "19th-century struggle between Britain and Russia; Conolly executed in Bukhoro named it." },
+      { term: "Eurasia", answer: "Europe and Asia together; West Siberian Plain lies between the Urals and Yenisey River." },
+      { term: "Central Asia", answer: "Region including Kazakhstan, Uzbekistan, Turkmenistan, Kyrgyzstan, and Tajikistan." },
+      { term: "Siberia", answer: "The large part of Russia that lies on the continent of Asia." },
+      { term: "Russian Revolution", answer: "1917 revolutions that ended rule by the czars; led to communist rule." },
+      { term: "Taiga", answer: "The boreal (northern coniferous) forest belt across much of Russia." },
+      { term: "USSR", answer: "Union of Soviet Socialist Republics—the Soviet Union (1922–1991)." },
+      { term: "Supra", answer: "Traditional Georgian feast with food, wine, and long toasts." },
+      { term: "Command economy", answer: "Government controls production and prices—used by Soviet leaders toward communism." },
+      { term: "Nomad", answer: "Person who moves from place to place with no permanent home." },
+      { term: "Yurt", answer: "Portable round tent; among the most valuable possessions of Central Asian nomads." },
+      { term: "Four regions", answer: "Russia (European core), Central Asia, Caucasus, Siberia/Russian Far East." },
+      { term: "Russia region traits", answer: "Political/economic center; most people and industry in western Russia." },
+      { term: "Central Asia traits", answer: "Dry grasslands/deserts; Silk Road crossroads; oil, gas, minerals." },
+      { term: "Caucasus traits", answer: "Mountains between Black and Caspian Seas; many ethnic groups; land/religion conflicts." },
+      { term: "Siberia traits", answer: "Extreme cold; huge resources; very sparsely populated." },
+      { term: "Capitalism", answer: "Private ownership; supply and demand set prices." },
+      { term: "Command economy (vs capitalism)", answer: "Government decides what is produced and at what price." },
+      { term: "Collective farms result", answer: "Forced labor on state farms; food production fell; famine and starvation for millions." },
+      { term: "Lake Baikal — where", answer: "Southern Siberia, near Mongolia." },
+      { term: "Lake Baikal — size/significance", answer: "Deepest lake; more than a mile deep; 20% of world's fresh water; unique species and seal." },
+      { term: "Silk Roads", answer: "Ancient trade routes from China through Central Asia to the Mediterranean; spread goods and ideas." },
+      { term: "Aral Sea — why shrinking", answer: "Amu Darya and Syr Darya diverted for cotton irrigation since the 1960s; lost ~87% of water." },
+      { term: "Aral Sea — hard to restore", answer: "Would require removing 9 of 18 million acres of farmland—huge hardship for farmers." },
+      { term: "Nuclear testing in Central Asia", answer: "Semey (Semipalatinsk): 470 tests 1949–1989; leukemia, thyroid cancer, birth defects." },
+      { term: "Ural Mountains", answer: "Divide Europe and Asia; rich in minerals." },
+      { term: "Volga River", answer: "Longest river in Europe; flows to the Caspian; major transport and power." },
+      { term: "Caspian Sea", answer: "World's largest inland body of water; oil, gas, fishing, caviar." },
+      { term: "Siberia resources difficulty", answer: "Remote, extreme cold, permafrost, few roads—expensive to extract and move." },
+      { term: "Northern European Plain", answer: "Flat fertile west; ~75% of Russia's people; milder climate, Moscow, St. Petersburg." },
+      { term: "Three largest cities", answer: "Moscow, St. Petersburg, Novosibirsk." },
+      { term: "General Winter", answer: "Harsh winter that defeated Napoleon in 1812—lost 90,000+ of 100,000 troops retreating." },
+      { term: "Trans-Siberian Railroad", answer: "Moscow to Vladivostok; moves people/resources; links European Russia to the Pacific." },
+      { term: "Russian Revolution importance", answer: "Ended czars; created communist USSR; shaped the 20th century and Cold War." },
+      { term: "Cold War (main idea)", answer: "U.S. vs USSR rivalry, arms race, NATO vs Warsaw Pact; ended ~1991." },
+      { term: "Land of Flames", answer: "Azerbaijan means land of flames—fires from oil/gas in rocks and Caspian waters." },
+      { term: "Dachas", answer: "Small country homes; nearly 30% of Russians own one, often with vegetable gardens." },
+      { term: "Banyas", answer: "Bathhouse ritual: sauna, steam with birch twigs, ice-cold plunge, hot tea." }
+    ];
+
+    // Build wrong-answer pool for multiple choice
+    const ALL_ANSWERS = ITEMS.map(i => i.answer);
+    function distractors(correct, n = 3) {
+      const pool = ALL_ANSWERS.filter(a => a !== correct);
+      const out = [];
+      const used = new Set();
+      while (out.length < n && pool.length) {
+        const i = Math.floor(Math.random() * pool.length);
+        const pick = pool.splice(i, 1)[0];
+        if (!used.has(pick)) { used.add(pick); out.push(pick); }
+      }
+      return out;
+    }
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    // Tabs
+    document.querySelectorAll('nav button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.panel).classList.add('active');
+      });
+    });
+
+    // Study panel
+    const studyEl = document.getElementById('study');
+    studyEl.innerHTML = '<div class="card"><h2>Full review</h2>' +
+      ITEMS.map(it => `<div class="study-item"><span class="term">${escapeHtml(it.term)}</span><p class="answer">${escapeHtml(it.answer)}</p></div>`).join('') +
+      '</div></div>';
+    function escapeHtml(s) {
+      const d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    // Flashcards
+    let flashOrder = shuffle(ITEMS.map((_, i) => i));
+    let flashIdx = 0;
+    const flashTerm = document.getElementById('flash-term');
+    const flashAnswer = document.getElementById('flash-answer');
+    const flashProgress = document.getElementById('flash-progress');
+
+    function showFlash() {
+      const item = ITEMS[flashOrder[flashIdx]];
+      flashTerm.textContent = item.term;
+      flashAnswer.textContent = item.answer;
+      flashAnswer.classList.add('hidden');
+      flashProgress.textContent = `Card ${flashIdx + 1} of ${flashOrder.length}`;
+    }
+    document.getElementById('flash-reveal').onclick = () => flashAnswer.classList.remove('hidden');
+    document.getElementById('flash-next').onclick = () => {
+      flashIdx = (flashIdx + 1) % flashOrder.length;
+      showFlash();
+    };
+    document.getElementById('flash-prev').onclick = () => {
+      flashIdx = (flashIdx - 1 + flashOrder.length) % flashOrder.length;
+      showFlash();
+    };
+    document.getElementById('flash-shuffle').onclick = () => {
+      flashOrder = shuffle(ITEMS.map((_, i) => i));
+      flashIdx = 0;
+      showFlash();
+    };
+    showFlash();
+
+    // Quiz
+    let quizOrder = [];
+    let quizIdx = 0;
+    let quizCorrect = 0;
+    let quizAnswered = false;
+
+    function startQuiz() {
+      quizOrder = shuffle(ITEMS.map((_, i) => i));
+      quizIdx = 0;
+      quizCorrect = 0;
+      document.getElementById('quiz-done').classList.add('hidden');
+      document.getElementById('quiz-card').classList.remove('hidden');
+      showQuizQuestion();
+    }
+
+    function showQuizQuestion() {
+      quizAnswered = false;
+      const item = ITEMS[quizOrder[quizIdx]];
+      const total = quizOrder.length;
+      document.getElementById('quiz-question').textContent = item.term.includes('—') || item.term.includes('traits') || item.term.includes('result')
+        ? item.term
+        : `What is ${item.term}?`;
+      document.getElementById('quiz-num').textContent = `Question ${quizIdx + 1} of ${total}`;
+      document.getElementById('quiz-score').textContent = `Score: ${quizCorrect} / ${quizIdx}`;
+      document.getElementById('quiz-bar').style.width = `${(quizIdx / total) * 100}%`;
+
+      const choices = shuffle([item.answer, ...distractors(item.answer)]);
+      const opts = document.getElementById('quiz-options');
+      opts.innerHTML = '';
+      choices.forEach((text, i) => {
+        const label = document.createElement('label');
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'quiz';
+        input.value = text;
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(text));
+        label.addEventListener('click', () => {
+          if (quizAnswered) return;
+          pickAnswer(text, item.answer, label);
+        });
+        opts.appendChild(label);
+      });
+
+      const fb = document.getElementById('quiz-feedback');
+      fb.classList.add('hidden');
+      document.getElementById('quiz-next').classList.add('hidden');
+    }
+
+    function pickAnswer(selected, correct, labelEl) {
+      quizAnswered = true;
+      const labels = document.querySelectorAll('#quiz-options label');
+      labels.forEach(l => {
+        const v = l.querySelector('input').value;
+        if (v === correct) l.classList.add('correct');
+        else if (l === labelEl && selected !== correct) l.classList.add('wrong');
+        l.style.pointerEvents = 'none';
+      });
+      const ok = selected === correct;
+      if (ok) quizCorrect++;
+      const fb = document.getElementById('quiz-feedback');
+      fb.classList.remove('hidden', 'ok', 'no');
+      fb.classList.add(ok ? 'ok' : 'no');
+      fb.textContent = ok ? 'Correct!' : `Not quite. Correct: ${correct}`;
+      document.getElementById('quiz-score').textContent = `Score: ${quizCorrect} / ${quizIdx + 1}`;
+      document.getElementById('quiz-next').classList.remove('hidden');
+    }
+
+    document.getElementById('quiz-next').onclick = () => {
+      quizIdx++;
+      if (quizIdx >= quizOrder.length) {
+        document.getElementById('quiz-card').classList.add('hidden');
+        const done = document.getElementById('quiz-done');
+        const pct = Math.round((quizCorrect / quizOrder.length) * 100);
+        done.classList.remove('hidden');
+        done.innerHTML = `Done!<br><strong>${quizCorrect} / ${quizOrder.length}</strong> (${pct}%)<br><span style="font-size:0.95rem;color:var(--muted)">${pct >= 80 ? 'Great job—review any misses once more.' : 'Review the Study tab and try again.'}</span>`;
+        document.getElementById('quiz-bar').style.width = '100%';
+        return;
+      }
+      showQuizQuestion();
+    };
+
+    document.getElementById('quiz-restart').onclick = startQuiz;
+    startQuiz();
+  </script>
+</body>
+</html>
