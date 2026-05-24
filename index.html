@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Russia & Central Asia — Study Quiz (Ch. 15–16)</title>
+  <title>Human Geography — Final Exam Study Quiz</title>
   <style>
     :root {
       --bg: #0f1419;
       --card: #1a2332;
-      --accent: #4a9eff;
+      --accent: #6bcf7f;
       --good: #3dd68c;
       --bad: #ff6b6b;
       --muted: #8b9cb3;
@@ -26,76 +26,44 @@
     .wrap { max-width: 720px; margin: 0 auto; }
     h1 { font-size: 1.35rem; margin: 0 0 0.25rem; }
     .sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 1rem; }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.25rem;
-    }
+  .sub a { color: var(--accent); }
+    nav { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
     nav button, .btn {
-      background: var(--card);
-      border: 1px solid #2d3d52;
-      color: var(--text);
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.95rem;
+      background: var(--card); border: 1px solid #2d3d52; color: var(--text);
+      padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.95rem;
     }
     nav button.active, .btn.primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #0a1628;
-      font-weight: 600;
+      background: var(--accent); border-color: var(--accent); color: #0a1628; font-weight: 600;
     }
     .panel { display: none; }
     .panel.active { display: block; }
     .card {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 1.25rem;
-      margin-bottom: 1rem;
-      border: 1px solid #2d3d52;
+      background: var(--card); border-radius: 12px; padding: 1.25rem;
+      margin-bottom: 1rem; border: 1px solid #2d3d52;
     }
     .card h2 { font-size: 1rem; margin: 0 0 0.75rem; color: var(--accent); }
     .term { font-weight: 600; color: #fff; }
     .flash-q { font-size: 1.1rem; margin-bottom: 1rem; }
     .options { display: flex; flex-direction: column; gap: 0.5rem; }
     .options label {
-      display: block;
-      padding: 0.65rem 0.85rem;
-      background: #243044;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 2px solid transparent;
+      display: block; padding: 0.65rem 0.85rem; background: #243044;
+      border-radius: 8px; cursor: pointer; border: 2px solid transparent;
     }
     .options label:hover { border-color: #3d5575; }
     .options input { margin-right: 0.5rem; }
-    .options label.correct { border-color: var(--good); background: #1a3d2e; }
-    .options label.wrong { border-color: var(--bad); background: #3d1f1f; }
-    .feedback { margin-top: 0.75rem; padding: 0.75rem; border-radius: 8px; font-size: 0.95rem; }
+    .options:not(.revealed) label.correct,
+    .options:not(.revealed) label.wrong { border-color: transparent; background: #243044; }
+    .options.revealed label.correct { border-color: var(--good); background: #1a3d2e; }
+    .options.revealed label.wrong { border-color: var(--bad); background: #3d1f1f; }
+    .feedback { margin-top: 0.75rem; padding: 0.75rem; border-radius: 8px; font-size: 0.95rem; white-space: pre-line; }
     .feedback.ok { background: #1a3d2e; color: var(--good); }
     .feedback.no { background: #3d1f1f; color: #ffb4b4; }
     .score-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-      color: var(--muted);
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 1rem; font-size: 0.9rem; color: var(--muted);
     }
-    .progress {
-      height: 6px;
-      background: #243044;
-      border-radius: 3px;
-      margin-bottom: 1rem;
-      overflow: hidden;
-    }
-    .progress span {
-      display: block;
-      height: 100%;
-      background: var(--accent);
-      transition: width 0.3s;
-    }
+    .progress { height: 6px; background: #243044; border-radius: 3px; margin-bottom: 1rem; overflow: hidden; }
+    .progress span { display: block; height: 100%; background: var(--accent); transition: width 0.3s; }
     .plan ol { padding-left: 1.25rem; }
     .plan li { margin-bottom: 0.75rem; }
     .plan strong { color: var(--accent); }
@@ -104,49 +72,85 @@
     .answer { color: var(--muted); font-size: 0.92rem; margin-top: 0.35rem; }
     .hidden { display: none; }
     .result-big { font-size: 1.5rem; text-align: center; padding: 1.5rem; }
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
+    .filter-bar button { font-size: 0.8rem; padding: 0.35rem 0.65rem; }
+    .chart-wrap {
+      background: #243044; border-radius: 10px; padding: 1rem; margin-bottom: 1rem;
+      overflow-x: auto;
+    }
+    .chart-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+    .chart-label { text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: 0.35rem; }
+    .how-to-read { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
+    .how-to-read strong { color: var(--text); }
+    #quiz-visual-container { min-height: 220px; }
+    .visual-topic { font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+    .sort-buckets { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.5rem; margin-bottom: 1rem; }
+    .sort-bucket {
+      background: #243044; border: 2px dashed #3d5575; border-radius: 8px; min-height: 100px; padding: 0.5rem;
+    }
+    .sort-bucket h3 { font-size: 0.8rem; margin: 0 0 0.5rem; color: var(--accent); }
+    .sort-bucket.over { border-color: var(--accent); background: #2a3d4d; }
+    .sort-chip {
+      display: inline-block; background: #1a2332; border: 1px solid #3d5575; padding: 0.35rem 0.6rem;
+      border-radius: 6px; margin: 0.2rem; font-size: 0.85rem; cursor: pointer;
+    }
+    .sort-chip.selected { border-color: var(--accent); background: #2a4a3a; }
+    .sort-chip.placed { opacity: 0.5; cursor: default; }
+    .sort-chip.wrong-place { border-color: var(--bad); }
+    .sort-chip.right-place { border-color: var(--good); }
+    .sort-pool { margin-bottom: 1rem; min-height: 2.5rem; }
+    .sort-pool-label { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.35rem; }
+    .match-pairs { display: grid; gap: 0.5rem; }
+    .match-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; align-items: center; }
+    .match-row select { width: 100%; padding: 0.5rem; background: #243044; border: 1px solid #3d5575; color: var(--text); border-radius: 6px; }
+    .match-row select.correct { border-color: var(--good); }
+    .match-row select.wrong { border-color: var(--bad); }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>Russia & Central Asia — Ch. 15–16</h1>
-    <p class="sub">Study plan → flashcards → quiz. </p>
+    <h1>Human Geography — Final Exam</h1>
+    <p class="sub">Study plan → review → flashcards → <strong>visual quiz</strong> + <strong>sort & match</strong> → text quiz. Country maps: <a href="https://www.geoguessr.com/seterra/en/vgp/3355?c=2K72V" target="_blank" rel="noopener">Seterra</a></p>
 
     <nav>
       <button type="button" data-panel="plan" class="active">Study plan</button>
       <button type="button" data-panel="study">Review all</button>
       <button type="button" data-panel="flash">Flashcards</button>
-      <button type="button" data-panel="quiz">Quiz</button>
+      <button type="button" data-panel="visual">Visual quiz</button>
+      <button type="button" data-panel="sort">Sort & match</button>
+      <button type="button" data-panel="quiz">Text quiz</button>
     </nav>
 
-    <!-- STUDY PLAN -->
     <section id="plan" class="panel active plan">
       <div class="card">
-        <h2>3-day study plan (~30 min/day)</h2>
+        <h2>5-day study plan (~30–45 min/day)</h2>
         <ol>
-          <li><strong>Day 1 — Regions & vocabulary</strong><br>
-            Read the four regions and their traits until you can name one fact about each.
-            Then drill vocab: Chernozem, continentality, taiga, Eurasia, Siberia, Central Asia, yurt, nomad, supra.</li>
-          <li><strong>Day 2 — History & economies</strong><br>
-            Czar / Peter the Great, Russian Revolution, USSR, command economy vs. capitalism, collective farms, Cold War, Great Game, Baltic republics.
-            Say aloud: <em>What happened to farmers on collective farms?</em></li>
-          <li><strong>Day 3 — Places & environment</strong><br>
-            Lake Baikal, Aral Sea, Silk Roads, Urals, Volga, Caspian, Northern European Plain, Trans-Siberian Railroad, General Winter, Land of Flames, nuclear testing, dachas, banyas.
-            Finish with a full <strong>Quiz</strong> tab run; repeat wrong answers.</li>
+          <li><strong>Day 1 — Maps & SC</strong><br>
+            Visual quiz: map parts, Equator/Prime Meridian, SC regions. Seterra for country maps.</li>
+          <li><strong>Day 2 — Culture & cities</strong><br>
+            Sort & match: resources + religions. Visual quiz: urban model. Text quiz for culture terms.</li>
+          <li><strong>Day 3 — Americas</strong><br>
+            St. Lawrence, branches of government, Beringia, Great Lakes, Great Migration, Latin America (Tordesillas, natives, slaves, colonialism).</li>
+          <li><strong>Day 4 — Europe & Russia</strong><br>
+            Rome legacies, Reformation, Alps, General Winter, Revolution, Cold War, command economy, Silk Road, nation/state.</li>
+          <li><strong>Day 5 — Countries + quiz</strong><br>
+            <a href="https://www.geoguessr.com/seterra/en/vgp/3355?c=2K72V" target="_blank" rel="noopener">Seterra</a> map run, then <strong>Visual quiz</strong> + <strong>Text quiz</strong>; redo misses.</li>
         </ol>
-        <p style="margin-top:1rem;color:var(--muted);font-size:0.9rem;">
-          Tip: Parent asks “Why?” follow-ups (e.g. <em>Why is the Aral Sea hard to restore?</em>) — one sentence answers are enough.
-        </p>
       </div>
     </section>
 
-    <!-- REVIEW ALL -->
-    <section id="study" class="panel"></section>
+    <section id="study" class="panel">
+      <div class="filter-bar" id="study-filters"></div>
+      <div id="study-list"></div>
+    </section>
 
-    <!-- FLASHCARDS -->
     <section id="flash" class="panel">
       <div class="score-bar">
         <span id="flash-progress">Card 1</span>
-        <button type="button" class="btn" id="flash-shuffle">Shuffle</button>
+        <div style="display:flex;gap:0.5rem;">
+          <button type="button" class="btn" id="flash-filter-all">All</button>
+          <button type="button" class="btn" id="flash-shuffle">Shuffle</button>
+        </div>
       </div>
       <div class="card">
         <p class="flash-q" id="flash-term"></p>
@@ -159,7 +163,38 @@
       </div>
     </section>
 
-    <!-- QUIZ -->
+    <section id="visual" class="panel">
+      <div class="card how-to-read" id="visual-hint">
+        <strong>Visual quiz</strong> — charts and diagrams from your review sheet. Read the image, then answer.
+      </div>
+      <div class="score-bar">
+        <span id="visual-score">Score: 0 / 0</span>
+        <span id="visual-num">Question 1</span>
+      </div>
+      <div class="progress"><span id="visual-bar" style="width:0%"></span></div>
+      <form class="card" id="visual-card" autocomplete="off" onsubmit="return false">
+        <p class="visual-topic" id="visual-topic"></p>
+        <div class="chart-wrap" id="quiz-visual-container"></div>
+        <p class="flash-q" id="visual-question"></p>
+        <div class="options" id="visual-options"></div>
+        <div class="feedback hidden" id="visual-feedback"></div>
+        <button type="button" class="btn primary hidden" id="visual-next" style="margin-top:0.75rem;">Next question</button>
+      </form>
+      <div class="card hidden result-big" id="visual-done"></div>
+      <button type="button" class="btn" id="visual-restart" style="margin-top:0.5rem;">Restart visual quiz</button>
+    </section>
+
+    <section id="sort" class="panel">
+      <div class="card">
+        <h2>Sort & match</h2>
+        <p style="font-size:0.9rem;color:var(--muted);margin:0 0 1rem;">
+          Click a term, then click the category it belongs in. Use <strong>Match</strong> for urban zones and government duties.
+        </p>
+        <div class="filter-bar" id="sort-game-tabs"></div>
+        <div id="sort-game-area"></div>
+      </div>
+    </section>
+
     <section id="quiz" class="panel">
       <div class="score-bar">
         <span id="quiz-score">Score: 0 / 0</span>
@@ -179,65 +214,186 @@
 
   <script>
     const ITEMS = [
-      { term: "Chernozem", answer: "Rich black soil on the Russian steppes; among the world's most fertile soils." },
-      { term: "Continentality", answer: "Effect of being far from an ocean—greater temperature extremes inland." },
-      { term: "Czar (Peter the Great)", answer: "Russian emperor (1682–1725) who tried to westernize Russia." },
-      { term: "Cold War", answer: "Rivalry between the U.S. and USSR that never became direct open warfare between them." },
-      { term: "Collective farms", answer: "Huge government-owned farms where teams of laborers worked together in the Soviet Union." },
-      { term: "Baltic republics", answer: "Estonia, Latvia, and Lithuania—former Soviet republics on the Baltic Sea." },
-      { term: "Great Game", answer: "19th-century struggle between Britain and Russia; Conolly executed in Bukhoro named it." },
-      { term: "Eurasia", answer: "Europe and Asia together; West Siberian Plain lies between the Urals and Yenisey River." },
-      { term: "Central Asia", answer: "Region including Kazakhstan, Uzbekistan, Turkmenistan, Kyrgyzstan, and Tajikistan." },
-      { term: "Siberia", answer: "The large part of Russia that lies on the continent of Asia." },
-      { term: "Russian Revolution", answer: "1917 revolutions that ended rule by the czars; led to communist rule." },
-      { term: "Taiga", answer: "The boreal (northern coniferous) forest belt across much of Russia." },
-      { term: "USSR", answer: "Union of Soviet Socialist Republics—the Soviet Union (1922–1991)." },
-      { term: "Supra", answer: "Traditional Georgian feast with food, wine, and long toasts." },
-      { term: "Command economy", answer: "Government controls production and prices—used by Soviet leaders toward communism." },
-      { term: "Nomad", answer: "Person who moves from place to place with no permanent home." },
-      { term: "Yurt", answer: "Portable round tent; among the most valuable possessions of Central Asian nomads." },
-      { term: "Four regions", answer: "Russia (European core), Central Asia, Caucasus, Siberia/Russian Far East." },
-      { term: "Russia region traits", answer: "Political/economic center; most people and industry in western Russia." },
-      { term: "Central Asia traits", answer: "Dry grasslands/deserts; Silk Road crossroads; oil, gas, minerals." },
-      { term: "Caucasus traits", answer: "Mountains between Black and Caspian Seas; many ethnic groups; land/religion conflicts." },
-      { term: "Siberia traits", answer: "Extreme cold; huge resources; very sparsely populated." },
-      { term: "Capitalism", answer: "Private ownership; supply and demand set prices." },
-      { term: "Command economy (vs capitalism)", answer: "Government decides what is produced and at what price." },
-      { term: "Collective farms result", answer: "Forced labor on state farms; food production fell; famine and starvation for millions." },
-      { term: "Lake Baikal — where", answer: "Southern Siberia, near Mongolia." },
-      { term: "Lake Baikal — size/significance", answer: "Deepest lake; more than a mile deep; 20% of world's fresh water; unique species and seal." },
-      { term: "Silk Roads", answer: "Ancient trade routes from China through Central Asia to the Mediterranean; spread goods and ideas." },
-      { term: "Aral Sea — why shrinking", answer: "Amu Darya and Syr Darya diverted for cotton irrigation since the 1960s; lost ~87% of water." },
-      { term: "Aral Sea — hard to restore", answer: "Would require removing 9 of 18 million acres of farmland—huge hardship for farmers." },
-      { term: "Nuclear testing in Central Asia", answer: "Semey (Semipalatinsk): 470 tests 1949–1989; leukemia, thyroid cancer, birth defects." },
-      { term: "Ural Mountains", answer: "Divide Europe and Asia; rich in minerals." },
-      { term: "Volga River", answer: "Longest river in Europe; flows to the Caspian; major transport and power." },
-      { term: "Caspian Sea", answer: "World's largest inland body of water; oil, gas, fishing, caviar." },
-      { term: "Siberia resources difficulty", answer: "Remote, extreme cold, permafrost, few roads—expensive to extract and move." },
-      { term: "Northern European Plain", answer: "Flat fertile west; ~75% of Russia's people; milder climate, Moscow, St. Petersburg." },
-      { term: "Three largest cities", answer: "Moscow, St. Petersburg, Novosibirsk." },
-      { term: "General Winter", answer: "Harsh winter that defeated Napoleon in 1812—lost 90,000+ of 100,000 troops retreating." },
-      { term: "Trans-Siberian Railroad", answer: "Moscow to Vladivostok; moves people/resources; links European Russia to the Pacific." },
-      { term: "Russian Revolution importance", answer: "Ended czars; created communist USSR; shaped the 20th century and Cold War." },
-      { term: "Cold War (main idea)", answer: "U.S. vs USSR rivalry, arms race, NATO vs Warsaw Pact; ended ~1991." },
-      { term: "Land of Flames", answer: "Azerbaijan means land of flames—fires from oil/gas in rocks and Caspian waters." },
-      { term: "Dachas", answer: "Small country homes; nearly 30% of Russians own one, often with vegetable gardens." },
-      { term: "Banyas", answer: "Bathhouse ritual: sauna, steam with birch twigs, ice-cold plunge, hot tea." }
+      { cat: "maps", term: "5 items on every map", answer: "Title, scale, legend, compass rose, latitude/longitude grid.", studyOnly: true },
+      { cat: "maps", term: "Equator", answer: "0° latitude; divides Northern and Southern Hemispheres.", studyOnly: true },
+      { cat: "maps", term: "Prime Meridian", answer: "0° longitude; divides Eastern and Western Hemispheres.", studyOnly: true },
+      { cat: "maps", term: "Pangea", answer: "Ancient supercontinent; broke apart by plate tectonics into today's continents.",
+        distractors: [
+          "Gondwana and Laurasia — still joined today with no continental drift",
+          "A single world ocean covering Earth with no dry land (all water)",
+          "The ice bridge that still connects North America to Europe year-round"
+        ] },
+      { cat: "sc", term: "SC regions (study map)", answer: "Use Visual quiz — 6 landform regions west to east: Blue Ridge, Piedmont, Sand Hills, Inner Coastal Plain, Outer Coastal Plain, Coastal Zone.", studyOnly: true },
+      { cat: "sc", term: "SC region: Blue Ridge", answer: "Mountainous; highest elevation in SC (Sassafras Mountain)." },
+      { cat: "sc", term: "SC region: Piedmont", answer: "Rolling hills and valleys; Fall Line; red clay foothills." },
+      { cat: "sc", term: "SC region: Sand Hills", answer: "Sandy rolling terrain; ancient coastline at Fall Line." },
+      { cat: "sc", term: "SC region: Inner Coastal Plain", answer: "Hilly; forests and farmland." },
+      { cat: "sc", term: "SC region: Outer Coastal Plain", answer: "Generally flat lowland." },
+      { cat: "sc", term: "SC region: Coastal Zone", answer: "Beaches, barrier islands, marshes; ocean-shaped landforms." },
+      { cat: "religion", term: "Monotheistic", answer: "Belief in one God — e.g. Christianity, Islam, Judaism.", studyOnly: true },
+      { cat: "religion", term: "Polytheistic", answer: "Belief in many gods — e.g. Hinduism, ancient Greek religion.", studyOnly: true },
+      { cat: "religion", term: "Animistic", answer: "Spirits in nature, animals, and objects — traditional indigenous beliefs.", studyOnly: true },
+      { cat: "religion", term: "3 Abrahamic religions", answer: "Judaism, Christianity, Islam — all trace heritage to Abraham.",
+        distractors: [
+          "Christianity, Islam, Hinduism — largest religions by followers today",
+          "Hinduism, Buddhism, Shinto — religions of East and South Asia",
+          "Islam, Buddhism, Judaism — religions that began in the Middle East and Asia"
+        ] },
+      { cat: "religion", term: "Most practiced religion worldwide", answer: "Christianity, then Islam, then Hinduism, then Buddhism.",
+        distractors: [
+          "Islam, then Christianity, then Hinduism, then Buddhism",
+          "Hinduism, then Christianity, then Islam, then Buddhism",
+          "Buddhism, then Christianity, then Islam, then Hinduism"
+        ] },
+      { cat: "resources", term: "Renewable resource", answer: "Can be replaced in a human lifetime — trees, fish, water, wind, solar.", studyOnly: true },
+      { cat: "resources", term: "Nonrenewable resource", answer: "Finite — coal, oil, natural gas, metals.", studyOnly: true },
+      { cat: "resources", term: "Inexhaustible resource", answer: "Won't run out on human scale — sunlight, wind, tides.", studyOnly: true },
+      { cat: "resources", term: "Advantage of bordering water", answer: "Trade, ports, fishing, transportation, often milder climate.",
+        distractors: [
+          "No seaports; higher transport costs; must trade through neighbors",
+          "Follows physical features — rivers, mountains, deserts, lakes",
+          "Finite — coal, oil, natural gas, metals"
+        ] },
+      { cat: "resources", term: "Disadvantage of landlocked country", answer: "No seaports; higher transport costs; must trade through neighbors.",
+        distractors: [
+          "Trade, ports, fishing, transportation, often milder climate",
+          "Won't run out on human scale — sunlight, wind, tides",
+          "Can be replaced in a human lifetime — trees, fish, water, wind, solar"
+        ] },
+      { cat: "resources", term: "Natural boundary", answer: "Follows physical features — rivers, mountains, deserts, lakes.", studyOnly: true },
+      { cat: "resources", term: "Artificial boundary", answer: "Drawn by people — survey lines, treaties (e.g. 49th parallel).", studyOnly: true },
+      { cat: "culture", term: "Culture", answer: "Shared beliefs, customs, traditions, language, and way of life." },
+      { cat: "culture", term: "Cultural hearth", answer: "Place where a culture originated and spread from." },
+      { cat: "culture", term: "Diffusion", answer: "Spread of culture, ideas, or innovations from place to place." },
+      { cat: "culture", term: "Acculturation", answer: "Adopting another culture's traits while keeping some of your own." },
+      { cat: "culture", term: "Society", answer: "Group sharing culture and living under organized rules and institutions." },
+      { cat: "culture", term: "Ethnic group", answer: "People sharing heritage, language, customs, and often religion." },
+      { cat: "culture", term: "Melting pot", answer: "Immigrant cultures blend into one shared society (U.S. model)." },
+      { cat: "culture", term: "Innovation", answer: "A new idea, invention, or way of doing something." },
+      { cat: "urban", term: "Urban districts (study diagram)", answer: "Use Visual quiz + Sort & match — CBD, commercial, residential, industrial rings.", studyOnly: true },
+      { cat: "urban", term: "Urbanization", answer: "Growth of city populations; movement from rural to urban areas." },
+      { cat: "urban", term: "Central Business District (CBD)", answer: "Downtown core — offices, banks, major shops.", studyOnly: true },
+      { cat: "urban", term: "Residential district", answer: "Area mainly of homes and neighborhoods.", studyOnly: true },
+      { cat: "urban", term: "Commercial district", answer: "Stores and services — shopping, restaurants.", studyOnly: true },
+      { cat: "urban", term: "Industrial district", answer: "Factories, warehouses, manufacturing.", studyOnly: true },
+      { cat: "urban", term: "Suburbs", answer: "Residential communities just outside the central city.", studyOnly: true },
+      { cat: "urban", term: "Exurbs", answer: "Communities beyond suburbs, rural in character but linked to the city.", studyOnly: true },
+      { cat: "urban", term: "Metropolitan area", answer: "Central city plus suburbs sharing economy and daily life.", studyOnly: true },
+      { cat: "population", term: "Where is population most dense?", answer: "Flat fertile land, temperate climate, near water, jobs, and trade routes." },
+      { cat: "population", term: "Reading population pyramids", answer: "Use the Visual quiz tab — wide base = growing; narrow base = shrinking; middle bulge = large generation.", studyOnly: true },
+      { cat: "population", term: "Carrying capacity", answer: "Maximum population an environment can support with available resources." },
+      { cat: "population", term: "Causes of rapid population growth", answer: "Better medicine, sanitation, food production; lower death rates." },
+      { cat: "population", term: "Industrialization effects", answer: "Factory jobs, urbanization, higher living standards, pollution." },
+      { cat: "language", term: "English language roots", answer: "Germanic (Anglo-Saxon) with Latin and French influence.", studyOnly: true },
+      { cat: "language", term: "Spanish, French, Portuguese, Italian roots", answer: "Latin (Romance languages).", studyOnly: true },
+      { cat: "language", term: "Dialect", answer: "Regional variety of a language — different words, accent, or grammar." },
+      { cat: "americas", term: "St. Lawrence Seaway", answer: "Connects Great Lakes to Atlantic; major trade/shipping route." },
+      { cat: "americas", term: "U.S. government branches", answer: "Use Sort & match — Legislative makes laws, Executive enforces, Judicial interprets.", studyOnly: true },
+      { cat: "americas", term: "Legislative branch", answer: "Congress — makes laws.", studyOnly: true },
+      { cat: "americas", term: "Executive branch", answer: "President — enforces laws.", studyOnly: true },
+      { cat: "americas", term: "Judicial branch", answer: "Courts — interpret laws.", studyOnly: true },
+      { cat: "americas", term: "First North Americans", answer: "Crossed from Asia via Beringia land bridge during Ice Age.",
+        distractors: [
+          "Land bridge connecting Siberia and Alaska when sea levels were lower",
+          "Spanish — St. Augustine, Florida (1565)",
+          "Sailed from Europe across the Atlantic in the 1400s only"
+        ] },
+      { cat: "americas", term: "Beringia", answer: "Land bridge connecting Siberia and Alaska when sea levels were lower.",
+        distractors: [
+          "Crossed from Asia via Beringia land bridge during Ice Age",
+          "Connects Great Lakes to Atlantic; major trade/shipping route",
+          "1494 line dividing Spain and Portugal's claims in the New World"
+        ] },
+      { cat: "americas", term: "First permanent European settlement in North America", answer: "Spanish — St. Augustine, Florida (1565)." },
+      { cat: "americas", term: "Oldest U.S. mountain chain", answer: "Appalachian Mountains." },
+      { cat: "americas", term: "5 Great Lakes (HOMES)", answer: "Huron, Ontario, Michigan, Erie, Superior.", studyOnly: true },
+      { cat: "americas", term: "Mississippi River importance", answer: "Major trade/shipping route; connects interior to Gulf ports." },
+      { cat: "americas", term: "Great Migration", answer: "African Americans moved from rural South to Northern/Western cities (1910s–1970s)." },
+      { cat: "americas", term: "Treaty of Tordesillas", answer: "1494 line dividing Spain and Portugal's claims in the New World." },
+      { cat: "americas", term: "What happened to Latin American natives?", answer: "Millions died from disease and conquest; led to mestizo culture and Spanish/Portuguese dominance." },
+      { cat: "americas", term: "Why African slaves in Caribbean?", answer: "Plantation economy needed cheap labor after indigenous population declined." },
+      { cat: "americas", term: "Central America/Caribbean main job sector", answer: "Agriculture (primary sector) — bananas, coffee, sugar." },
+      { cat: "americas", term: "Largest industry — Venezuela & Mexico", answer: "Petroleum/oil." },
+      { cat: "americas", term: "Effects of colonialism", answer: "European languages/religion, artificial borders, economic dependency, mixed cultures." },
+      { cat: "europe", term: "Legacies of Rome", answer: "Latin, Roman law, roads, aqueducts, architecture, Christianity spread." },
+      { cat: "europe", term: "Rome's most profound legacy", answer: "Latin language and Roman law/republic — shaped Europe and modern world." },
+      { cat: "europe", term: "Reformation", answer: "1517 — Martin Luther split Western Christianity (Protestant vs Catholic)." },
+      { cat: "europe", term: "Alps — where?", answer: "Central Europe — Switzerland, Austria, France, Italy." },
+      { cat: "europe", term: "Alps — famous for?", answer: "High mountains, skiing, tourism; barrier and trade routes." },
+      { cat: "russia", term: "General Winter / Russian war advantage", answer: "Harsh cold climate and vast size defeat unprepared invaders." },
+      { cat: "russia", term: "Purpose of Russian Revolution", answer: "End czar rule; create communist society." },
+      { cat: "russia", term: "Collective farms", answer: "Huge government farms; forced labor; famine for millions.",
+        distractors: [
+          "Government controls production, prices, and jobs",
+          "End czar rule; create communist society",
+          "U.S. vs USSR rivalry without direct war; arms race; ended ~1991"
+        ] },
+      { cat: "russia", term: "Cold War", answer: "U.S. vs USSR rivalry without direct war; arms race; ended ~1991.",
+        distractors: [
+          "End czar rule; create communist society",
+          "Government controls production, prices, and jobs",
+          "Huge government farms; forced labor; famine for millions"
+        ] },
+      { cat: "russia", term: "Command economy", answer: "Government controls production, prices, and jobs.",
+        distractors: [
+          "Huge government farms; forced labor; famine for millions",
+          "Ancient trade routes China to Mediterranean; spread goods and ideas",
+          "Harsh cold climate and vast size defeat unprepared invaders"
+        ] },
+      { cat: "russia", term: "Silk Road", answer: "Ancient trade routes China to Mediterranean; spread goods and ideas." },
+      { cat: "political", term: "Nation", answer: "People with shared culture, history, and identity.",
+        distractors: [
+          "Independent political unit with territory, government, sovereignty",
+          "Nation and state share same borders — e.g. Japan",
+          "Total income divided by population — average earnings per person"
+        ] },
+      { cat: "political", term: "State", answer: "Independent political unit with territory, government, sovereignty.",
+        distractors: [
+          "People with shared culture, history, and identity",
+          "Nation and state share same borders — e.g. Japan",
+          "Total income divided by population — average earnings per person"
+        ] },
+      { cat: "political", term: "Nation-state", answer: "Nation and state share same borders — e.g. Japan.",
+        distractors: [
+          "People with shared culture, history, and identity",
+          "Independent political unit with territory, government, sovereignty",
+          "Total income divided by population — average earnings per person"
+        ] },
+      { cat: "political", term: "Per-capita income", answer: "Total income divided by population — average earnings per person." },
+      { cat: "countries", term: "Country locations & capitals", answer: "Practice on Seterra (link at top) — not multiple choice.", studyOnly: true },
+      { cat: "countries", term: "Canada — capital", answer: "Ottawa.", studyOnly: true },
+      { cat: "countries", term: "Mexico — capital", answer: "Mexico City.", studyOnly: true },
+      { cat: "countries", term: "Brazil — capital", answer: "Brasília.", studyOnly: true },
+      { cat: "countries", term: "Argentina — capital", answer: "Buenos Aires.", studyOnly: true },
+      { cat: "countries", term: "Cuba — capital", answer: "Havana.", studyOnly: true },
+      { cat: "countries", term: "Panama — key feature", answer: "Panama Canal connects Atlantic and Pacific.", studyOnly: true },
+      { cat: "countries", term: "U.K. — capital", answer: "London.", studyOnly: true },
+      { cat: "countries", term: "France — capital", answer: "Paris.", studyOnly: true },
+      { cat: "countries", term: "Germany — capital", answer: "Berlin.", studyOnly: true },
+      { cat: "countries", term: "Italy — capital", answer: "Rome.", studyOnly: true },
+      { cat: "countries", term: "Spain — capital", answer: "Madrid.", studyOnly: true },
+      { cat: "countries", term: "Russia — capital", answer: "Moscow.", studyOnly: true },
+      { cat: "countries", term: "Ukraine — capital", answer: "Kyiv.", studyOnly: true },
+      { cat: "countries", term: "Egypt — capital", answer: "Cairo.", studyOnly: true },
+      { cat: "countries", term: "Nigeria — key fact", answer: "Most populous country in Africa; major oil producer.", studyOnly: true },
+      { cat: "countries", term: "South Africa — key fact", answer: "Rich in minerals; apartheid history.", studyOnly: true },
+      { cat: "countries", term: "Saudi Arabia — key fact", answer: "Major oil producer; home of Mecca.", studyOnly: true },
+      { cat: "countries", term: "Israel — key fact", answer: "Holy to Judaism, Christianity, and Islam.", studyOnly: true },
+      { cat: "countries", term: "Iran — key fact", answer: "Persian (not Arab); major oil; Tehran capital.", studyOnly: true },
+      { cat: "countries", term: "India — capital", answer: "New Delhi.", studyOnly: true },
+      { cat: "countries", term: "China — capital", answer: "Beijing.", studyOnly: true },
+      { cat: "countries", term: "Japan — capital", answer: "Tokyo.", studyOnly: true },
+      { cat: "countries", term: "Australia — capital", answer: "Canberra.", studyOnly: true },
+      { cat: "countries", term: "Indonesia — key fact", answer: "World's largest archipelago; Jakarta capital.", studyOnly: true },
+      { cat: "countries", term: "Vietnam — capital", answer: "Hanoi.", studyOnly: true },
+      { cat: "countries", term: "Landlocked — Paraguay", answer: "No direct ocean access; must trade through neighbors.", studyOnly: true },
+      { cat: "countries", term: "Landlocked — Bolivia", answer: "No coastline; high altitude; La Paz/Sucre." }
     ];
 
-    // Build wrong-answer pool for multiple choice
-    const ALL_ANSWERS = ITEMS.map(i => i.answer);
-    function distractors(correct, n = 3) {
-      const pool = ALL_ANSWERS.filter(a => a !== correct);
-      const out = [];
-      const used = new Set();
-      while (out.length < n && pool.length) {
-        const i = Math.floor(Math.random() * pool.length);
-        const pick = pool.splice(i, 1)[0];
-        if (!used.has(pick)) { used.add(pick); out.push(pick); }
-      }
-      return out;
-    }
+    const CATS = { maps: "Maps", sc: "SC regions", religion: "Religion", resources: "Resources", culture: "Culture", urban: "Urban", population: "Population", language: "Language", americas: "Americas", europe: "Europe", russia: "Russia", political: "Political", countries: "Countries" };
+
+    const QUIZ_ITEMS = ITEMS.filter(i => !i.studyOnly);
+
     function shuffle(arr) {
       const a = [...arr];
       for (let i = a.length - 1; i > 0; i--) {
@@ -246,8 +402,12 @@
       }
       return a;
     }
+    function escapeHtml(s) {
+      const d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
 
-    // Tabs
     document.querySelectorAll('nav button').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
@@ -257,19 +417,29 @@
       });
     });
 
-    // Study panel
-    const studyEl = document.getElementById('study');
-    studyEl.innerHTML = '<div class="card"><h2>Full review</h2>' +
-      ITEMS.map(it => `<div class="study-item"><span class="term">${escapeHtml(it.term)}</span><p class="answer">${escapeHtml(it.answer)}</p></div>`).join('') +
-      '</div></div>';
-    function escapeHtml(s) {
-      const d = document.createElement('div');
-      d.textContent = s;
-      return d.innerHTML;
+    // Study panel with filters
+    let studyFilter = 'all';
+    function renderStudy() {
+      const list = studyFilter === 'all' ? ITEMS : ITEMS.filter(i => i.cat === studyFilter);
+      document.getElementById('study-list').innerHTML = '<div class="card"><h2>Full review (' + list.length + ' items)</h2>' +
+        list.map(it => `<div class="study-item"><span class="term">${escapeHtml(it.term)}</span><p class="answer">${escapeHtml(it.answer)}</p></div>`).join('') +
+        '</div>';
     }
+    const filtEl = document.getElementById('study-filters');
+    filtEl.innerHTML = '<button type="button" class="btn primary" data-cat="all">All</button>' +
+      Object.entries(CATS).map(([k,v]) => `<button type="button" class="btn" data-cat="${k}">${v}</button>`).join('');
+    filtEl.querySelectorAll('button').forEach(b => {
+      b.addEventListener('click', () => {
+        studyFilter = b.dataset.cat;
+        filtEl.querySelectorAll('button').forEach(x => x.classList.toggle('primary', x.dataset.cat === studyFilter));
+        renderStudy();
+      });
+    });
+    renderStudy();
 
-    // Flashcards
-    let flashOrder = shuffle(ITEMS.map((_, i) => i));
+    // Flashcards (text concepts only — not studyOnly)
+    let flashPool = QUIZ_ITEMS.map((item) => ITEMS.indexOf(item));
+    let flashOrder = shuffle(flashPool);
     let flashIdx = 0;
     const flashTerm = document.getElementById('flash-term');
     const flashAnswer = document.getElementById('flash-answer');
@@ -283,31 +453,93 @@
       flashProgress.textContent = `Card ${flashIdx + 1} of ${flashOrder.length}`;
     }
     document.getElementById('flash-reveal').onclick = () => flashAnswer.classList.remove('hidden');
-    document.getElementById('flash-next').onclick = () => {
-      flashIdx = (flashIdx + 1) % flashOrder.length;
-      showFlash();
-    };
-    document.getElementById('flash-prev').onclick = () => {
-      flashIdx = (flashIdx - 1 + flashOrder.length) % flashOrder.length;
-      showFlash();
-    };
-    document.getElementById('flash-shuffle').onclick = () => {
-      flashOrder = shuffle(ITEMS.map((_, i) => i));
-      flashIdx = 0;
-      showFlash();
+    document.getElementById('flash-next').onclick = () => { flashIdx = (flashIdx + 1) % flashOrder.length; showFlash(); };
+    document.getElementById('flash-prev').onclick = () => { flashIdx = (flashIdx - 1 + flashOrder.length) % flashOrder.length; showFlash(); };
+    document.getElementById('flash-shuffle').onclick = () => { flashOrder = shuffle(flashPool); flashIdx = 0; showFlash(); };
+    document.getElementById('flash-filter-all').onclick = () => {
+      flashPool = QUIZ_ITEMS.map((item) => ITEMS.indexOf(item));
+      flashOrder = shuffle(flashPool); flashIdx = 0; showFlash();
     };
     showFlash();
 
-    // Quiz
-    let quizOrder = [];
-    let quizIdx = 0;
-    let quizCorrect = 0;
-    let quizAnswered = false;
+    // Text quiz
+    function termUsesAre(term) {
+      const t = term.trim();
+      if (/^SC region:/i.test(t)) return false;
+      if (/\b(farms|lakes|mountains|effects|legacies|causes|religions|roots|items|americans|suburbs|exurbs|districts)\b/i.test(t)) return true;
+      if (/^\d+\s+\S/.test(t) && /\b(religions|items|lakes|farms)\b/i.test(t)) return true;
+      const last = t.split(/\s+/).pop().replace(/[?,.\-—/]/g, '');
+      if (/[^s]s$/.test(last) && !/(ss|us|is|ness)$/.test(last)) return true;
+      return false;
+    }
+
+    function quizSubject(term) {
+      const t = term.trim();
+      const withThe = new Set([
+        'Silk Road', 'Cold War', 'Great Migration', 'Reformation',
+        'Equator', 'Prime Meridian', 'St. Lawrence Seaway', 'Treaty of Tordesillas'
+      ]);
+      if (withThe.has(t) || /^Treaty of /i.test(t)) return 'the ' + t;
+      if (t === 'Melting pot') return 'a melting pot';
+      if (t === 'Cultural hearth') return 'a cultural hearth';
+      if (t === 'Ethnic group') return 'an ethnic group';
+      if (t === 'Dialect') return 'a dialect';
+      return t;
+    }
+
+    function quizQuestionForTerm(term) {
+      if (term.includes('—') || term.includes('?') || term.includes(':') ||
+          term.includes('branch') || term.includes('HOMES') ||
+          /^(what|where|why|how|who)\s/i.test(term.trim())) {
+        return term;
+      }
+      const verb = termUsesAre(term) ? 'are' : 'is';
+      return `What ${verb} ${quizSubject(term)}?`;
+    }
+
+    const RELATED_CATS = {
+      maps: ['sc', 'resources'],
+      sc: ['maps', 'resources'],
+      religion: ['culture'],
+      resources: ['maps', 'political', 'population'],
+      culture: ['religion', 'urban', 'population'],
+      urban: ['culture', 'population'],
+      population: ['urban', 'resources', 'culture'],
+      language: ['culture', 'europe'],
+      americas: ['europe', 'political'],
+      europe: ['americas', 'russia', 'religion'],
+      russia: ['europe', 'political', 'americas'],
+      political: ['culture', 'resources', 'population']
+    };
+
+    function answersInCategories(cats, exclude) {
+      const seen = new Set();
+      const out = [];
+      for (const i of ITEMS) {
+        if (!cats.includes(i.cat) || i.answer === exclude || seen.has(i.answer)) continue;
+        seen.add(i.answer);
+        out.push(i.answer);
+      }
+      return out;
+    }
+
+    /** Plausible wrong choices: same topic first, then related topics — not random global answers. */
+    function distractorsForItem(item, n = 3) {
+      let pool = (item.distractors || []).filter((d) => d !== item.answer);
+      if (pool.length < n) {
+        pool = [...new Set([...pool, ...answersInCategories([item.cat], item.answer)])];
+      }
+      if (pool.length < n && RELATED_CATS[item.cat]) {
+        pool = [...new Set([...pool, ...answersInCategories(RELATED_CATS[item.cat], item.answer)])];
+      }
+      return shuffle(pool.filter((d) => d !== item.answer)).slice(0, n);
+    }
+
+    let quizOrder = [], quizIdx = 0, quizCorrect = 0, quizAnswered = false;
 
     function startQuiz() {
-      quizOrder = shuffle(ITEMS.map((_, i) => i));
-      quizIdx = 0;
-      quizCorrect = 0;
+      quizOrder = shuffle(QUIZ_ITEMS.map((item) => ITEMS.indexOf(item)));
+      quizIdx = 0; quizCorrect = 0;
       document.getElementById('quiz-done').classList.add('hidden');
       document.getElementById('quiz-card').classList.remove('hidden');
       showQuizQuestion();
@@ -317,41 +549,41 @@
       quizAnswered = false;
       const item = ITEMS[quizOrder[quizIdx]];
       const total = quizOrder.length;
-      document.getElementById('quiz-question').textContent = item.term.includes('—') || item.term.includes('traits') || item.term.includes('result')
-        ? item.term
-        : `What is ${item.term}?`;
+      document.getElementById('quiz-question').textContent = quizQuestionForTerm(item.term);
       document.getElementById('quiz-num').textContent = `Question ${quizIdx + 1} of ${total}`;
       document.getElementById('quiz-score').textContent = `Score: ${quizCorrect} / ${quizIdx}`;
       document.getElementById('quiz-bar').style.width = `${(quizIdx / total) * 100}%`;
 
-      const choices = shuffle([item.answer, ...distractors(item.answer)]);
+      const choices = shuffle([item.answer, ...distractorsForItem(item, 3)]);
       const opts = document.getElementById('quiz-options');
       opts.innerHTML = '';
-      choices.forEach((text, i) => {
+      opts.classList.remove('revealed');
+      choices.forEach(text => {
         const label = document.createElement('label');
         const input = document.createElement('input');
         input.type = 'radio';
         input.name = 'quiz';
         input.value = text;
+        input.checked = false;
         label.appendChild(input);
         label.appendChild(document.createTextNode(text));
         label.addEventListener('click', () => {
           if (quizAnswered) return;
-          pickAnswer(text, item.answer, label);
+          pickAnswer(input.value, item.answer, label);
         });
         opts.appendChild(label);
       });
-
-      const fb = document.getElementById('quiz-feedback');
-      fb.classList.add('hidden');
+      document.getElementById('quiz-feedback').classList.add('hidden');
       document.getElementById('quiz-next').classList.add('hidden');
     }
 
     function pickAnswer(selected, correct, labelEl) {
       quizAnswered = true;
-      const labels = document.querySelectorAll('#quiz-options label');
-      labels.forEach(l => {
+      const opts = document.getElementById('quiz-options');
+      opts.classList.add('revealed');
+      opts.querySelectorAll('label').forEach(l => {
         const v = l.querySelector('input').value;
+        l.classList.remove('correct', 'wrong');
         if (v === correct) l.classList.add('correct');
         else if (l === labelEl && selected !== correct) l.classList.add('wrong');
         l.style.pointerEvents = 'none';
@@ -361,7 +593,7 @@
       const fb = document.getElementById('quiz-feedback');
       fb.classList.remove('hidden', 'ok', 'no');
       fb.classList.add(ok ? 'ok' : 'no');
-      fb.textContent = ok ? 'Correct!' : `Not quite. Correct: ${correct}`;
+      fb.textContent = ok ? 'Correct!' : 'Not quite. The correct choice is highlighted in green.';
       document.getElementById('quiz-score').textContent = `Score: ${quizCorrect} / ${quizIdx + 1}`;
       document.getElementById('quiz-next').classList.remove('hidden');
     }
@@ -373,7 +605,7 @@
         const done = document.getElementById('quiz-done');
         const pct = Math.round((quizCorrect / quizOrder.length) * 100);
         done.classList.remove('hidden');
-        done.innerHTML = `Done!<br><strong>${quizCorrect} / ${quizOrder.length}</strong> (${pct}%)<br><span style="font-size:0.95rem;color:var(--muted)">${pct >= 80 ? 'Great job—review any misses once more.' : 'Review the Study tab and try again.'}</span>`;
+        done.innerHTML = `Done!<br><strong>${quizCorrect} / ${quizOrder.length}</strong> (${pct}%)<br><span style="font-size:0.95rem;color:var(--muted)">${pct >= 80 ? 'Great job—hit Seterra for maps, then review misses.' : 'Review the Study tab and try again.'}</span>`;
         document.getElementById('quiz-bar').style.width = '100%';
         return;
       }
@@ -381,7 +613,15 @@
     };
 
     document.getElementById('quiz-restart').onclick = startQuiz;
-    startQuiz();
+
+    let textQuizStarted = false;
+    document.querySelector('nav button[data-panel="quiz"]').addEventListener('click', () => {
+      if (!textQuizStarted) {
+        textQuizStarted = true;
+        startQuiz();
+      }
+    });
   </script>
+  <script src="final-visual.js"></script>
 </body>
 </html>
